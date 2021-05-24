@@ -41,7 +41,7 @@
                             out.println("<input type='hidden' name= 'p_id' value='"+product.getId()+"' />"); //+product.getId()+
                             out.println("<input type='hidden' name= 'user_id' value='"+user.getId()+"' />"); //user.getId()
                             out.println("<button type='submit' ><i class='fas fa-shopping-basket'></i>Buy</button>");
-                            
+                        
                             out.println("</form>");
                             out.println("</div>");
                         }
