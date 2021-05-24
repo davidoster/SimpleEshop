@@ -7,24 +7,18 @@ package controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import models.Product;
-import services.ProductService;
+import services.SaleService;
 
 /**
  *
- * @author George.Pasparakis
+ * @author tsepe
  */
-@WebServlet(name = "ProductsController", urlPatterns = {"/products"})
-public class ProductsController extends HttpServlet {
+public class CheckOut extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,10 +37,11 @@ public class ProductsController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ProductsController</title>");            
+            out.println("<title>Servlet CheckOut</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ProductsController at " + request.getContextPath() + "</h1>");
+            out.println("alert('MPIKE')");
+            out.println("<h1>Servlet CheckOut at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -64,23 +59,7 @@ public class ProductsController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet ProductsController</title>");            
-//            out.println("</head>");
-//            out.println("<body>");
-//            out.println("<h1>Servlet ProductsController at " + request.getContextPath() + "</h1>");
-            ProductService productService = new ProductService();
-            List<Product> products = productService.getAllProducts();
-//            System.out.println("Products :" + products.get(0));
-            showView(request, response, "/WEB-INF/views/products.jsp", products);
-//            out.println("</body>");
-//            out.println("</html>");
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -94,15 +73,21 @@ public class ProductsController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            
-            ProductService productService = new ProductService();
-            List<Product> products = productService.getAllProducts();
-//            
-            showView(request, response, "/WEB-INF/views/products.jsp", products);
-//           
-        }
+
+        SaleService saleS = new SaleService();
+        String user = (String) request.getParameter("user_id");
+        Integer user_id = Integer.valueOf(user);
+        String p_id = (String) request.getParameter("p_id");
+        Integer intP_id = Integer.valueOf(p_id);
+        System.out.println("---------------->   TO PRODUCT ID  " + intP_id);
+        System.out.println("---------------->   TO USER ID  " + user_id);
+
+        System.out.println("------------>  MPIKE");
+        saleS.insertSales(user_id, intP_id);
+//            processRequest(request,response);
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/success.jsp");
+        rd.forward(request, response);
+
     }
 
     /**
@@ -114,18 +99,5 @@ public class ProductsController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-    
-    int showView(HttpServletRequest request, HttpServletResponse response, String viewName, List<Product> products) {
-        RequestDispatcher rd = request.getRequestDispatcher(viewName);
-        try {
-           
-            request.setAttribute("products", products);
-            rd.forward(request, response);
-        } catch (ServletException | IOException ex) {
-            System.out.println("Error: " + ex.getMessage());
-            Logger.getLogger(ProductsController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return(0);
-    }
 
 }

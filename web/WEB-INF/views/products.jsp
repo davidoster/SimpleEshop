@@ -4,6 +4,7 @@
     Author     : George.Pasparakis
 --%>
 
+<%@page import="models.User"%>
 <%@page import="java.util.List"%>
 <%@page import="models.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -25,74 +26,48 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-sm">
-                    <p>PEN</p>
-                    <p><img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Derbys_Peter_Pan_peanut_butter_sample_blikje%2C_foto3.JPG" alt="PEN"/></p>
-                    <p>100.25&euro;</p>
-                    <p>Some Pen</p>
-                    <button >Buy</button>
-                </div>
-                <div class="col-sm">
-                    <p>PEN</p>
-                    <p><img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Derbys_Peter_Pan_peanut_butter_sample_blikje%2C_foto3.JPG" alt="PEN"/></p>
-                    <p>100.25&euro;</p>
-                    <p>Some Pen</p>
-                    <button >Buy</button>
-                </div>
-                <div class="col-sm">
-                    <p>PEN</p>
-                    <p><img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Derbys_Peter_Pan_peanut_butter_sample_blikje%2C_foto3.JPG" alt="PEN"/></p>
-                    <p>100.25&euro;</p>
-                    <p>Some Pen</p>
-                    <button class="btn btn-danger"><i class="fas fa-shopping-basket"></i>Buy</button>
-                </div>
-                <div class="col-sm">
-                    <p>PEN</p>
-                    <p><img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Derbys_Peter_Pan_peanut_butter_sample_blikje%2C_foto3.JPG" alt="PEN"/></p>
-                    <p>100.25&euro;</p>
-                    <p>Some Pen</p>
-                    <button  class="btn btn-info"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
-  <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/>
-</svg>Buy</button>
-                </div>
-                <div class="col-sm">
-                    <p>PEN</p>
-                    <p><img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Derbys_Peter_Pan_peanut_butter_sample_blikje%2C_foto3.JPG" alt="PEN"/></p>
-                    <p>100.25&euro;</p>
-                    <p>Some Pen</p>
-                    <button >Buy</button>
-                </div>
-                <div class="col-sm">
-                    <p>PEN</p>
-                    <p><img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Derbys_Peter_Pan_peanut_butter_sample_blikje%2C_foto3.JPG" alt="PEN"/></p>
-                    <p>100.25&euro;</p>
-                    <p>Some Pen</p>
-                    <button >Buy</button>
-                </div>
-                <div class="col-sm">
-                    <p>PEN</p>
-                    <p><img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Derbys_Peter_Pan_peanut_butter_sample_blikje%2C_foto3.JPG" alt="PEN"/></p>
-                    <p>100.25&euro;</p>
-                    <p>Some Pen</p>
-                    <button class="btn btn-danger"><i class="fas fa-shopping-basket"></i>Buy</button>
-                </div>
-                <div class="col-sm">
-                    <p>PEN</p>
-                    <p><img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Derbys_Peter_Pan_peanut_butter_sample_blikje%2C_foto3.JPG" alt="PEN"/></p>
-                    <p>100.25&euro;</p>
-                    <p>Some Pen</p>
-                    <button  class="btn btn-info"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
-  <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/>
-</svg>Buy</button>
-                </div>
+                <%
+                    List<Product> products = (List<Product>) request.getAttribute("products");
+                    if (request.getAttribute("user") != null) {
+                        User user = (User) request.getAttribute("user");
+                        for (Product product : products) {
+                            out.println(product.getId());
+                            out.println("<div class=\"col-sm\">");
+                            out.println("<form method=\"POST\" action=\"checkOut\">");
+                            out.println("<p>" + product.getName() + "</p>");
+                            out.println("<p><img src=\"" + product.getImage() + "\"alt=\"PEN\"/></p>");
+                            out.println("<p>" + product.getPrice() + "&euro;</p>");
+                            out.println("<p>" + product.getDescription() + "</p>");
+                            out.println("<input type='hidden' name= 'p_id' value='"+product.getId()+"' />"); //+product.getId()+
+                            out.println("<input type='hidden' name= 'user_id' value='"+user.getId()+"' />"); //user.getId()
+                            out.println("<button type='submit' ><i class='fas fa-shopping-basket'></i>Buy</button>");
+                            
+                            out.println("</form>");
+                            out.println("</div>");
+                        }
+
+                    } else {
+                        for (Product product : products) {
+
+                            out.println("<div class=\"col-sm\">");
+                            out.println("<p>" + product.getName() + "</p>");
+                            out.println("<p><img src=\"" + product.getImage() + "\"alt=\"PEN\"/></p>");
+                            out.println("<p>" + product.getPrice() + "&euro;</p>");
+                            out.println("<p>" + product.getDescription() + "</p>");
+                            out.println("<button ><i class=\"fas fa-shopping-basket\"></i>Buy</button>");
+
+                            out.println("</div>");
+
+                        }
+                    }
+
+                %>
+
+
+
             </div>
         </div>
-        
-        <% 
-            List<Product> products = (List<Product>)request.getAttribute("products"); 
-            for (Product product : products) {
-                out.println(product);
-            }
-        %>
+
+
     </body>
 </html>
